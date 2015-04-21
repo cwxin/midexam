@@ -3,8 +3,7 @@
 #include <time.h>
 
 void MergeSort(int[]);
-int *v, i, temp, j;
-double N;
+int *v, i, temp, j, N;
 
 int main()
 {
