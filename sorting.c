@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <math.h>
 
 void MergeSort(int[]);
 int *v, i, temp, j;
@@ -9,7 +8,6 @@ double N;
 
 int main()
 {
-	int *v, i;
 	time_t T=1;
 	N=10;
 	srand(time(&T));
