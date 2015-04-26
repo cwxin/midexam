@@ -18,21 +18,26 @@ int main(void)
 	srand(time(&T));
 	v=(int*)malloc(N*sizeof(int));
 	printf("Sort method:Quick_Sort\n");
-	for(i=0;i<N;++i)
-		{ 
-			v[i]=rand()%100;
-			printf("%d,", v[i]);
-		}
+		for(i=0;i<N;++i)
+			{ 
+				v[i]=rand()%100;
+				printf("%d,", v[i]);
+			}
 	printf("\n");
+	
 	quick_sort(v,N);
 	
 	printf("If you want to know the median term of the sequence, please input %d\n", (N+1)/2);
 	printf("Input that you want to find which term in the sequece:");
     scanf("%d", &K);
-	if ((K<=N) && (K>=1))
-		printf("We can find the kth term of the sequence is %d", v[K-1]);
-	else
-		printf("please run this program again!");
+		if ((K<=N) && (K>=1))
+			{
+				printf("We can find the kth term of the sequence is %d", v[K-1]);
+			}
+		else
+			{
+				printf("please run this program again!");
+			}
 	}
 	else
 	{
@@ -44,13 +49,13 @@ void swap(int *a, int *b)
 {
 	temp = *a;
 	*a = *b;
-	*b =temp;
+	*b = temp;
 }
 
 int portion(int *v, int New, int pivot_k)
 {
-	side=pivot_k;
-	pivot=v[pivot_k];
+	side = pivot_k;
+	pivot = v[pivot_k];
 	swap(&v[pivot_k],&v[pivot_k+(New-1)]);
 	
 	for(i=0;i<New;i++)
@@ -58,7 +63,7 @@ int portion(int *v, int New, int pivot_k)
 		if(v[pivot_k+i]<pivot)
 		{
 			swap(&v[pivot_k+i],&v[side]);
-			side=side+1;
+			side = side+1;
 		}
 	}
 	swap(&v[pivot_k+(New-1)],&v[side]);
@@ -67,9 +72,12 @@ int portion(int *v, int New, int pivot_k)
 
 void quick_sort(int *v, int part)
 {
-	if(part==0 || part ==1)
+	if(part==0 || part==1)
+	{
 		return;
+	}
 	else
+	{
 		side = portion(v,part,0);
 		if(side != (K-1))
 		{
@@ -80,5 +88,6 @@ void quick_sort(int *v, int part)
 		{
 			return;
 		}
+	}
 }
 
