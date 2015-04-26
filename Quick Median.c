@@ -66,6 +66,7 @@ int portion(int *v, int New, int pivot_k)
 			side = side+1;
 		}
 	}
+	
 	swap(&v[pivot_k+(New-1)],&v[side]);
 	return side;
 }
