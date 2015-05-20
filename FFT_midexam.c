@@ -30,20 +30,22 @@ int main()
 	z_i = (double *) malloc(N*sizeof(double));
 	
 	Initial(x_r, x_i, N);
-	/*for(n=0;n<N;n++)
+	for(n=0;n<N;n++)
 	{
-		printf("%f %f\n", x_r[n],x_i[n]);
-	}*/
+		y_i[n]=0.0;
+		//printf("%f %f\n", x_r[n],x_i[n]);
+	}
+	t1 = clock();
 	Bit_Reverse_Integer(N,p,q,r,x_r,y_r);
 	/*for(n=0;n<N;n++)
 	{
 		printf("%f %f\n", y_r[n],y_i[n]);
 	}*/
-	t1 = clock();
+	//t1 = clock();
 	FFT(x_r, x_i, y_r, y_i,z_r,z_i, N,p,q,r);
 	t2 = clock();
 	//Print_Complex_Vector(y_r, y_i, N);
-	printf("Fast FT3: %f secs\n", 1.0*(t2-t1)/CLOCKS_PER_SEC);
+	printf("Fast FT: %f secs\n", 1.0*(t2-t1)/CLOCKS_PER_SEC);
 	return 0;
 }
 
@@ -154,7 +156,6 @@ int FFT(double *x_r, double *x_i, double *y_r, double *y_i,double *z_r,double *z
 	double w_r, w_i,w_r1,w_i1,w_r2,w_i2,w_r3,w_i3,w_r4,w_i4;
 	double t_r, t_i, t_r1, t_r2, t_i1, t_i2,t_r3,t_i3,t_r4,t_i4;
 	n = 2;
-
 	while(a>0)
 	{
 		for(k=0;k<n/2;k++)
@@ -175,7 +176,7 @@ int FFT(double *x_r, double *x_i, double *y_r, double *y_i,double *z_r,double *z
 
 //				for(a=0;a<N;a++)
 //				{printf("\ny_r[%d]=%f , y_i[%d]=%f \n",a,y_r[a],a,y_i[a]);}				
-//				printf("w_r=%f,w_i=%f,w_r1=%f,w_i1=%f,w_r2=%f,w_i2=%f. \n",w_r,w_i,w_r1,w_i1,w_r2,w_i2);
+//			    printf("w_r=%f,w_i=%f,w_r1=%f,w_i1=%f,w_r2=%f,w_i2=%f. \n",w_r,w_i,w_r1,w_i1,w_r2,w_i2);
 //				printf("\n%f %f %f\n", t_i,t_i1,t_i2);
 //				printf("\nz_r[%d]=%f ,z_i[%d]=%f\n", p,z_r[p],p,z_i[p]);
 //				printf("\ny_r[%d]=%f ,y_r[%d]=%f\n", p,y_r[p],p,y_i[p]);
@@ -467,7 +468,7 @@ int Print_Complex_Vector(double *y_r, double *y_i, int N)
 	int n;
 	for(n=0;n<N;++n)
 	{
-		if (y_i[n] >=0) printf("%d : %f +%f i\n", n, y_r[n], y_i[n]);
+		if (y_i[n] >= 0) printf("%d : %f + %f i\n", n, y_r[n], y_i[n]);		
 		else printf("%d : %f %f i\n", n, y_r[n], y_i[n]);
 	}
 	return 0;
